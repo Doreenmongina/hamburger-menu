@@ -5,46 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hamburger</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        header{
-            background-color: rgb(27, 2, 2);          
-        }   
-        li{
+        header {
+            background-color: rgb(27, 2, 2);
+        }
+        li {
             list-style: none;
         }
 
-        a{
+        a {
             text-decoration: none;
             color: white;
         }
 
-        .navbar{
+        .navbar {
             min-height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
+            max-width: 1200px;
+            margin: auto;
         }
 
-        .nav-menu{
+        .nav-menu {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 60px;
+            background-color: rgb(27, 2, 2);
         }
 
-        .nav-branding{
+        .nav-branding {
             font-size: 2.5rem;
             font-weight: bold;
             color: white;
         }
 
-        .nav-link{
+        .nav-link {
             font-size: 1.2rem;
             font-weight: 500;
             color: white;
@@ -80,13 +83,13 @@
             .hamburger{
                 display: block;  
             }
-            .hamburger:active .line:nth-child(2){
+            .hamburger.active .line:nth-child(2){
                 opacity: 0;
             }
-            .hamburger:active .line:nth-child(1){
+            .hamburger.active .line:nth-child(1){
                 transform: translateY(8px) rotate(45deg);
             }
-            .hamburger:active .line:nth-child(3){
+            .hamburger.active .line:nth-child(3){
                 transform: translateY(-8px) rotate(-45deg);
             }
 
@@ -98,7 +101,9 @@
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
+                z-index: 100;
                 transition: 0.3s; 
+                background-color: rgb(27, 2, 2);
             }
             .nav-item{
                 margin: 16px 0;
@@ -143,6 +148,7 @@
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        console.log(navMenu.classList.contains('active') ? 'Menu Opened' : 'Menu Closed');
     });
 
     // Close the menu when a link is clicked
@@ -150,6 +156,8 @@
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            console.log(navMenu.classList.contains('active') ? 'Menu Opened' : 'Menu Closed');
+
         });
     });
 </script>
